@@ -23,7 +23,11 @@ public class GrapheListe implements Graphe{
             this.adjacence.add(new Arcs());
         }
         //mise a jour liste d'arcs du noeud depart, verifier si l'arc existe, sinon l'ajouter
-
+        int i = this.getIndice(depart);
+        Arcs arcs = this.adjacence.get(i);
+        arcs.ajouterArc(new Arc(destination, cout));
     }
+
+
 
 }
