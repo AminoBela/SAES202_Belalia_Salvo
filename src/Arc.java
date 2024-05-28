@@ -7,4 +7,9 @@ public class Arc {
         this.dest = d;
         this.cout = c;
     }
+
+    @Override
+    public String toString() {
+        return this.dest + " (" + this.cout + ")";
+    }
 }

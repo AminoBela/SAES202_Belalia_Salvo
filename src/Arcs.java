@@ -11,4 +11,12 @@ public class Arcs {
     public List<Arc> getArcs() {
         return this.arcs;
     }
+    public String toString() {
+        String s = "";
+        for (Arc a : this.arcs) {
+            s += a + " ";
+        }
+        return s;
+    }
+
 }

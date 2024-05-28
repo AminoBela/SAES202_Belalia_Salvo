@@ -6,6 +6,13 @@ public class GrapheListe implements Graphe{
     private ArrayList<String> noeuds ;
     private ArrayList<Arcs> adjacence ;
 
+    /**
+     * Constructeur afin de creer un graphe vide
+     */
+    public GrapheListe(){
+        this.noeuds = new ArrayList<>();
+        this.adjacence = new ArrayList<>();
+    }
 
     public int getIndice(String n){
         return this.noeuds.indexOf(n);
@@ -29,5 +36,23 @@ public class GrapheListe implements Graphe{
     }
 
 
+    @Override
+    public String toString() {
+        String s = "";
+        for (int i = 0; i < this.noeuds.size(); i++) {
+            s += this.noeuds.get(i) + " -> " + this.adjacence.get(i) + "\n";
+        }
+        return s;
+    }
 
+    @Override
+    public List<String> listeNoeuds() {
+        return this.noeuds;
+    }
+
+    @Override
+    public List<Arc> suivants(String s) {
+        int i = this.getIndice(s);
+        return this.adjacence.get(i).getArcs();
+    }
 }
