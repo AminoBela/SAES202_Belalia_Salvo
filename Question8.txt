@@ -1,0 +1,50 @@
+Question 8 Algorithme du point fixe
+
+----------------
+
+Fonction point fixe (GrapheListe g InOut, String depart) {
+    debut
+        // Initialisation des couts, le premier noeud est à 0 et les autres à +infini
+        L(g.listeNoeuds().get(0)) <- 0
+        pour i de 0 à g.listeNoeuds().size()
+            si g.listeNoeuds().get(i) = depart alors faire
+                L(g.listeNoeuds().get(i)) <- 0
+            sinon faire
+                L(g.listeNoeuds().get(i)) <- +infini
+            fsi
+        fpour
+        // Initialisation des parents, tant que le point fixe n'est pas atteint on continue
+        cond <- faux
+        tant que non cond faire
+            cond <- vrai
+            // Parcours de tous les noeuds pour mettre à jour les valeurs
+                pour i de 0 à g.listeNoeuds().size()
+                    pour j de 0 à g.suivants(g.listeNoeuds().get(i)).size() faire
+                        noeudEtu <- g.suivants(g.listeNoeuds().get(i)).get(j).getDest()
+                        valNoeudEtudie <- L(noeudEtu)
+                        valNoeud <- L(g.listeNoeuds().get(i)) + g.suivants(listeNoeuds.get(i)).get(j).getCout()
+                        si valNoeud < valNoeudEtu alors faire
+                            L(g.suivants(listeNoeuds.get(i)).get(j).getDest()) <- valNoeud
+                            Parent(g.suivants(listeNoeuds.get(i)).get(j).getDest()) <- g.listeNoeuds().get(i)
+                            cond <- faux
+                        fsi
+                    fpour
+                fpour
+        ftant
+    fin
+}
+
+Lexique
+----------------
+g: GrapheListe --> noeuds: liste de String, adjacence: liste de Arcs
+Arc --> dest: String, cout: double
+i: entier, indice d'incrémentation
+cond: boolean, verifie la condition du point fixe
+L(x): permet d'obtenir le cout du départ jusqu'au noeud X
+Parent(X): permet d'obtenir le parent du noeud X
+valNoeud: double, permet de stocker le cout du noeud actuel
+valNoeudEtudie: double, permet de stocker le cout du noeud étudié
+noeudEtu: String, permet de stocker le noeud étudié
+depart: String, noeud de départ
++infini: double, valeur infinie
+-----------
