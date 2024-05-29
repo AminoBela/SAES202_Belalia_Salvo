@@ -50,9 +50,16 @@ public class GrapheListe implements Graphe{
         return this.noeuds;
     }
 
-    @Override
-    public List<Arc> suivants(String s) {
-        int i = this.getIndice(s);
-        return this.adjacence.get(i).getArcs();
+
+    /**
+     * Méthode
+     * @param s
+     * @return
+     */
+     @Override
+    public List<Arc> suivants(String s){
+        int i = this.getIndice(s) ;
+        return this.adjacence.get(i).getArcs() ;
+
     }
 }
