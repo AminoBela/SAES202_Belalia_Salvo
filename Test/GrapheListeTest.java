@@ -104,7 +104,7 @@ class GrapheListeTest {
         gr.ajouterArc("B", "C", 3);
         gr.ajouterArc("C", "D", 4);
         assertTrue(gr.listeNoeuds().contains("A"));
-    }
+    }>
 
 
 }

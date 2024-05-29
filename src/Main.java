@@ -5,18 +5,22 @@ public class Main {
     public static void main(String[] args) {
         GrapheListe g = new GrapheListe();
         try {
-            g.ajouterArc("A", "B", 1);
-            g.ajouterArc("A", "C", 2);
-            g.ajouterArc("B", "C", 3);
-            g.ajouterArc("C", "D", 4);
-            g.ajouterArc("D", "A", 5);
+            g.ajouterArc("D", "B", 23);
+            g.ajouterArc("D", "C", 10);
+            g.ajouterArc("B", "E", 11);
+            g.ajouterArc("C", "A", 19);
+            g.ajouterArc("A", "B", 12);
+            g.ajouterArc("A", "D", 87);
+            g.ajouterArc("E", "D", 43);
             System.out.println(g);
 
             //application algorithme point fixe
 
             BellmanFord bf = new BellmanFord();
-            Valeur v = bf.resoudre(g, "A");
+            Valeur v = bf.resoudre(g, "D");
             System.out.println(v);
+            //affichage du chemin le plus court, methode calculChemin
+            System.out.println(v.calculerChemin("A"));
 
 
         } catch (Exception e) {
