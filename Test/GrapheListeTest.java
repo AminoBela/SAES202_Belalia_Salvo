@@ -1,15 +1,13 @@
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import java.util.ArrayList;
 import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Classe de test pour GrapheListe
+ */
 class GrapheListeTest {
 
-    @org.junit.jupiter.api.Test
-
+    @Test
     public void testconstructeur() {
         GrapheListe g = new GrapheListe();
         assertEquals("", g.toString());
@@ -107,7 +105,6 @@ class GrapheListeTest {
         gr.ajouterArc("C", "D", 4);
         assertTrue(gr.listeNoeuds().contains("A"));
     }
-
 
 
 }
