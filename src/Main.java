@@ -1,7 +1,12 @@
+
 /**
  * Classe main pour tester le graphe
  */
 public class Main {
+    /**
+     * Main pour tester le graphe
+     * @param args
+     */
     public static void main(String[] args) {
         GrapheListe g = new GrapheListe();
         try {
@@ -14,14 +19,14 @@ public class Main {
             g.ajouterArc("E", "D", 43);
             System.out.println(g);
 
-            //application algorithme point fixe
-
+            System.out.println("BellmanFord");
+            System.out.println("====================================");
             BellmanFord bf = new BellmanFord();
             Valeur v = bf.resoudre(g, "D");
             System.out.println(v);
-            //affichage du chemin le plus court, methode calculChemin
-            System.out.println(v.calculerChemin("A"));
+            System.out.println("====================================");
 
+            System.out.println(v.calculerChemin("A"));
 
         } catch (Exception e) {
             e.printStackTrace();

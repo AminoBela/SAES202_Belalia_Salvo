@@ -82,8 +82,13 @@ public class GrapheListe implements Graphe{
      */
      @Override
     public List<Arc> suivants(String s){
-        int i = this.getIndice(s) ;
-        return this.adjacence.get(i).getArcs() ;
+        if (!this.noeuds.contains(s)){
+            return null;
+        } else {
+            int i = this.getIndice(s);
+            return this.adjacence.get(i).getArcs();
+        }
+
 
     }
 }

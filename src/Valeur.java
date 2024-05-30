@@ -87,6 +87,11 @@ public class Valeur {
         return res;
     }
 
+    /**
+     * Methode qui permet de calculer (afficher) le chemin entre le noeud de depart et le noeud de destination
+     * @param destination
+     * @return
+     */
     public List<String> calculerChemin(String destination){
         List<String> chemin = new ArrayList<>();
         String noeud = destination;

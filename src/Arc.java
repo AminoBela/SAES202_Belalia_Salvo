@@ -3,6 +3,7 @@
  * Classe Arc
  */
 public class Arc {
+
     /**
      * Attributs dest et cout
      */
