@@ -1,3 +1,6 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -6,6 +9,7 @@ import java.util.List;
  * il sert a creer un graphe sous forme de liste
  */
 public class GrapheListe implements Graphe{
+
     /**
      * Attributs de la classe GrapheListe, noeuds et adjacence
      */
@@ -18,6 +22,49 @@ public class GrapheListe implements Graphe{
     public GrapheListe(){
         this.noeuds = new ArrayList<>();
         this.adjacence = new ArrayList<>();
+    }
+
+    /**
+     * Constructeur afin de creer un graphe a partir de noeuds et d'adjacence
+     * @param noeuds
+     * @param adjacence
+     */
+    public GrapheListe(ArrayList<String> noeuds, ArrayList<Arcs> adjacence) {
+        this.noeuds = noeuds;
+        this.adjacence = adjacence;
+    }
+
+    /**
+     * Constructeur afin de creer un graphe a partir d'un fichier
+     * @param fichier
+     * @throws IOException
+     */
+    public GrapheListe(String fichier) throws IOException {
+        this.noeuds = new ArrayList<>();
+        this.adjacence = new ArrayList<>();
+        lireFichier(fichier);
+    }
+
+    /**
+     * Methode pour lire un fichier et creer un graphe
+     * @param fichier
+     * @throws IOException
+     */
+    public void lireFichier(String fichier) throws IOException {
+        BufferedReader br = new BufferedReader(new FileReader(fichier));
+        String ligne;
+        while ((ligne = br.readLine()) != null) {
+            String[] element = ligne.split("\t");
+            String depart = element[0];
+            String destination = element[1];
+            double cout = Double.parseDouble(element[2]);
+            try {
+                ajouterArc(depart, destination, cout);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        br.close();
     }
 
     /**
@@ -88,7 +135,5 @@ public class GrapheListe implements Graphe{
             int i = this.getIndice(s);
             return this.adjacence.get(i).getArcs();
         }
-
-
     }
 }

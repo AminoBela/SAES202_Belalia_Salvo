@@ -1,35 +1,42 @@
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 
 /**
  * Classe main pour tester le graphe
  */
 public class Main {
+
     /**
      * Main pour tester le graphe
      * @param args
      */
     public static void main(String[] args) {
-        GrapheListe g = new GrapheListe();
         try {
-            g.ajouterArc("D", "B", 23);
-            g.ajouterArc("D", "C", 10);
-            g.ajouterArc("B", "E", 11);
-            g.ajouterArc("C", "A", 19);
-            g.ajouterArc("A", "B", 12);
-            g.ajouterArc("A", "D", 87);
-            g.ajouterArc("E", "D", 43);
-            System.out.println(g);
-
-            System.out.println("BellmanFord");
+            String fichier = "Graphes/Graphe1.txt";
+            GrapheListe g = new GrapheListe(fichier);
+            //affichage du graphe
+            System.out.println("Ensemble du graphe : ");
             System.out.println("====================================");
+            System.out.println(g);
+            Scanner sc = new Scanner(System.in);
             BellmanFord bf = new BellmanFord();
-            Valeur v = bf.resoudre(g, "D");
+            //affichage du programme, demande du noeud de depart et affichage du resultat
+            System.out.println("Programe de calcul de chemin minimal avec Bellman-Ford");
+            System.out.println("====================================");
+            System.out.println("Entrer le noeud de depart : ");
+            String depart = sc.nextLine();
+            System.out.println("====================================");
+            Valeur v = bf.resoudre(g, depart);
             System.out.println(v);
             System.out.println("====================================");
-
-            System.out.println(v.calculerChemin("A"));
-
+            //demande du noeud de destination et affichage du chemin minimal
+            System.out.println("Entrer le noeud de destination : ");
+            String destination = sc.nextLine();
+            System.out.println(v.calculerChemin(destination));
+        } catch (FileNotFoundException e) {
+            System.out.println("Fichier introuvable");
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("Erreur : " + e.getMessage());
         }
     }
 }

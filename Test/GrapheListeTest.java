@@ -151,7 +151,13 @@ class GrapheListeTest {
         gr.ajouterArc("C", "D", 4);
         assertFalse(gr.listeNoeuds().contains("E"));
     }
-
-
-
+    /**
+     * Test lecture fichier graphe
+     * @throws Exception
+     */
+    @Test
+    public void testLectureFichier() throws Exception {
+        GrapheListe gr = new GrapheListe("Graphes/Graphe1.txt");
+        assertEquals(10, gr.listeNoeuds().size());
+    }
 }

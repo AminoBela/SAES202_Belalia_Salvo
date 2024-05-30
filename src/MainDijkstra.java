@@ -1,34 +1,43 @@
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
 /**
  * MainDijkstra, classe pour tester Dijkstra
  */
 public class MainDijkstra {
+
     /**
      * Main pour tester Dijkstra
      * @param args
      */
     public static void main(String[] args) {
-        GrapheListe gr = new GrapheListe();
         try {
-            gr.ajouterArc("D", "B", 23);
-            gr.ajouterArc("D", "C", 10);
-            gr.ajouterArc("B", "E", 11);
-            gr.ajouterArc("C", "A", 19);
-            gr.ajouterArc("A", "B", 12);
-            gr.ajouterArc("A", "D", 87);
-            gr.ajouterArc("E", "D", 43);
-            System.out.println(gr);
-
-            System.out.println("Dijkstra");
+            //lecture du fichier pour creer le graphe
+            String fichier = "Graphes/Graphe1.txt";
+            GrapheListe gr = new GrapheListe(fichier);
+            //affichage du graphe
+            System.out.println("Ensemble du graphe : ");
             System.out.println("====================================");
+            System.out.println(gr);
+            Scanner sc = new Scanner(System.in);
             Dijkstra d = new Dijkstra();
-            Valeur v = d.resoudre(gr, "D");
+            //affichage du programme, demande du noeud de depart et affichage du resultat
+            System.out.println("Programe de calcul de chemin minimal avec Dijkstra");
+            System.out.println("====================================");
+            System.out.println("Entrer le noeud de depart : ");
+            String depart = sc.nextLine();
+            System.out.println("====================================");
+            Valeur v = d.resoudre(gr, depart);
             System.out.println(v);
             System.out.println("====================================");
-
-            System.out.println(v.calculerChemin("A"));
-
+            //demande du noeud de destination et affichage du chemin minimal
+            System.out.println("Entrer le noeud de destination : ");
+            String destination = sc.nextLine();
+            System.out.println(v.calculerChemin(destination));
+        } catch (FileNotFoundException e) {
+            System.out.println("Fichier introuvable");
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("Erreur : " + e.getMessage());
         }
     }
 }

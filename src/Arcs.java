@@ -4,6 +4,7 @@ import java.util.*;
  * Classe permettant de stocker des arcs
  */
 public class Arcs {
+
     /**
      * Attribut arcs qui est une liste d'arcs
      */
