@@ -7,6 +7,26 @@ import java.util.List;
 public class Dijkstra implements Algorithme {
 
     /**
+     * Attribut arcsVisites pour stocker les arcs visites
+     */
+    private List<Arc> arcsVisitesDijkstra;
+
+    /**
+     * Constructeur de la classe Dijkstra
+     */
+    public Dijkstra() {
+        this.arcsVisitesDijkstra = new ArrayList<>();
+    }
+
+    /**
+     * Methode get pour les arcs visites
+     *
+     */
+    public List<Arc> getArcsVisites() {
+        return arcsVisitesDijkstra;
+    }
+
+    /**
      * Methode resoudre qui permet de resoudre le probleme du plus court chemin
      * @param g graphe
      * @param depart noeud de depart
@@ -36,6 +56,9 @@ public class Dijkstra implements Algorithme {
             q.remove(u);
             //pour chaque voisin, on met a jour la valeur si besoin
             for (int i = 0; i < g.suivants(u).size(); i++) {
+                //on stocke l'arc visite, pour l'affichage
+                Arc arc = g.suivants(u).get(i);
+                arcsVisitesDijkstra.add(arc);
                 String v1 = g.suivants(u).get(i).getDestination();
                 double d = v.getValeur(u) + g.suivants(u).get(i).getCout();
                 //si la nouvelle valeur est plus petite, on met a jour
@@ -47,4 +70,5 @@ public class Dijkstra implements Algorithme {
         }
         return v;
     }
+
 }

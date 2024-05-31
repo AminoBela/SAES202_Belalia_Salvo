@@ -6,9 +6,8 @@ public class ComparerAlgo {
      * Attributs, temps d'execution, nombre de noeuds visites, nombre d'arcs visites et qualite du chemin
      */
     private long tempsExecution;
-    private int nombreNoeudsVisites;
     private int nombreArcsVisites;
-    private double qualiteChemin;
+    private double complexite;
 
     /**
      * Methode set pour le temps d'execution
@@ -17,14 +16,6 @@ public class ComparerAlgo {
 
     public void setTempsExecution(long tempsExecution) {
         this.tempsExecution = tempsExecution;
-    }
-
-    /**
-     * Methode set pour le nombre de noeuds visites
-     * @param nombreNoeudsVisites
-     */
-    public void setNbNoeuds(int nombreNoeudsVisites) {
-        this.nombreNoeudsVisites = nombreNoeudsVisites;
     }
 
     /**
@@ -37,10 +28,10 @@ public class ComparerAlgo {
 
     /**
      * Methode set pour la qualite du chemin
-     * @param qualiteChemin
+     * @param complexite
      */
-    public void setQualiteChemin(double qualiteChemin) {
-        this.qualiteChemin = qualiteChemin;
+    public void setComplexite(double complexite) {
+        this.complexite = complexite;
     }
 
 
@@ -49,31 +40,22 @@ public class ComparerAlgo {
      * @return
      */
     public String toString() {
-        return "Temps d'execution : " + tempsExecution + "ms" + "\nNombre de noeuds visites : " + nombreNoeudsVisites + "\nNombre d'arcs visites : " + nombreArcsVisites + "\nQualite du chemin : " + qualiteChemin;
+        return "Temps d'execution : " + tempsExecution + "ms" + "\nNombre d'arcs visites : " + nombreArcsVisites + "\nComplexité du chemin : " + complexite ;
     }
 
     /**
-     * Methode get pour la qualite du chemin
+     * Methode get pour la complexite du chemin
      * @return
      */
-    public double getQualiteChemin() {
-        return qualiteChemin;
+    public double getComplexite() {
+        return complexite;
     }
-
     /**
      * Methode get pour le nombre d'arcs visites
      * @return
      */
     public int getNbArcs() {
         return nombreArcsVisites;
-    }
-
-    /**
-     * Methode get pour le nombre de noeuds visites
-     * @return
-     */
-    public int getNbNoeuds() {
-        return nombreNoeudsVisites;
     }
 
     /**

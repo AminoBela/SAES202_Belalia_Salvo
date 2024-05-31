@@ -1,3 +1,5 @@
+import java.util.Collection;
+
 /**
  * Interface Algorithme
  */
@@ -9,4 +11,6 @@ public interface Algorithme {
      * @return Valeur
      */
     public Valeur resoudre(Graphe g, String s);
+
+
 }

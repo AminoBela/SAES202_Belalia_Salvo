@@ -18,6 +18,7 @@ public class Valeur {
     Map<String, Double> valeur;
     Map<String, String> parent;
 
+
     /**
      * constructeur vide (initialise la possibilité de stocker des valeurs)
      */
@@ -101,4 +102,5 @@ public class Valeur {
         }
         return chemin;
     }
+
 }

@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class Main {
 
     /**
-     * Main pour tester le graphe
+     * Main pour tester le graphe, on va creer un graphe a partir d'un fichier, puis on va demander un noeud de depart et un noeud de destination pour calculer le chemin minimal
      * @param args
      */
     public static void main(String[] args) {

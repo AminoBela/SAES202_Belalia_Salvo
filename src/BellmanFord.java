@@ -1,9 +1,30 @@
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Classe qui implemente l'algorithme de Bellman-Ford
  */
 public class BellmanFord implements Algorithme{
+
+    /**
+     * Attribut arcsVisitesBellmanFord pour stocker les arcs visites
+     */
+    private List<Arc> arcsVisitesBellmanFord;
+
+    /***
+     * Constructeur de la classe BellmanFord
+     */
+    public BellmanFord() {
+        this.arcsVisitesBellmanFord = new ArrayList<>();
+    }
+
+    /**
+     * Methode get pour les arcs visites
+     * @return
+     */
+    public List<Arc> getArcsVisites() {
+        return arcsVisitesBellmanFord;
+    }
 
     /**
      * Implementation de l'algorithme du point fixe (Question 8.txt)
@@ -29,6 +50,8 @@ public class BellmanFord implements Algorithme{
             //pour chaque noeud, on regarde ses voisins et on met a jour la valeur si besoin
             for (int i = 0; i < noeuds.size(); i++) {
                 for (int j = 0; j< g.suivants(noeuds.get(i)).size(); j++) {
+                    Arc arc = g.suivants(noeuds.get(i)).get(j);
+                    arcsVisitesBellmanFord.add(arc);
                     String etu = g.suivants(noeuds.get(i)).get(j).getDestination();
                     double valEtu = v.getValeur(etu);
                     double nouvVal = v.getValeur(noeuds.get(i)) + g.suivants(noeuds.get(i)).get(j).getCout();

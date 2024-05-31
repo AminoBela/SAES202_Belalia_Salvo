@@ -7,7 +7,7 @@ import java.util.List;
  */
 public class MainComparerAlgo {
     /**
-     * Main pour comparer les algorithmes de Dijkstra et Bellman-Ford
+     * Main pour comparer les algorithmes de Dijkstra et Bellman-Ford, ici on va comparer deuc graphes, un long et un court, puis on va comparer tous les graphes du repertoire Graphes
      * @param args
      */
     public static void main(String[] args) {
@@ -49,14 +49,15 @@ public class MainComparerAlgo {
                        ComparerAlgo resultatBellmanFord = mesurerAlgo(new BellmanFord(), graphe, "1");
                         //ajout des resultats aux resultats totaux
                        totalDijkstra.setTempsExecution(totalDijkstra.getTempsExecution() + resultatDijkstra.getTempsExecution());
-                       totalDijkstra.setNbNoeuds(totalDijkstra.getNbNoeuds() + resultatDijkstra.getNbNoeuds());
                        totalDijkstra.setNbArcs(totalDijkstra.getNbArcs() + resultatDijkstra.getNbArcs());
-                       totalDijkstra.setQualiteChemin(totalDijkstra.getQualiteChemin() + resultatDijkstra.getQualiteChemin());
+                       //complexite du chemin pour Dijkstra, O (arete * arrete * log(noeud))
+                       totalDijkstra.setComplexite(totalDijkstra.getComplexite() + resultatDijkstra.getComplexite());
+
                         //meme chose pour Bellman-Ford
                        totalBellmanFord.setTempsExecution(totalBellmanFord.getTempsExecution() + resultatBellmanFord.getTempsExecution());
-                       totalBellmanFord.setNbNoeuds(totalBellmanFord.getNbNoeuds() + resultatBellmanFord.getNbNoeuds());
                        totalBellmanFord.setNbArcs(totalBellmanFord.getNbArcs() + resultatBellmanFord.getNbArcs());
-                       totalBellmanFord.setQualiteChemin(totalBellmanFord.getQualiteChemin() + resultatBellmanFord.getQualiteChemin());
+                       //complexite du chemin pour Bellman-Ford, O (arete * noeud)
+                       totalBellmanFord.setComplexite(totalBellmanFord.getComplexite() + resultatBellmanFord.getComplexite());
                    }
                }
            }
@@ -79,9 +80,9 @@ public class MainComparerAlgo {
 
     /**
      * Methode pour afficher les resultats de la comparaison
-     * @param algorithme
-     * @param g
-     * @param depart
+     * @param algorithme algorithme a comparer
+     * @param g graphe
+     * @param depart noeud de depart
      */
     public static void comparerAlgo(Algorithme algorithme, Graphe g, String depart) {
         ComparerAlgo mesure = mesurerAlgo(algorithme, g, depart);
@@ -89,7 +90,7 @@ public class MainComparerAlgo {
     }
 
     /**
-     * Methode pour mesurer les performances d'un algorithme
+     * Methode pour mesurer les performances d'un algorithme, on mesure le temps d'execution, le nombre d'arcs visites et la complexite du chemin
      * @param algorithme
      * @param g
      * @param depart
@@ -106,25 +107,28 @@ public class MainComparerAlgo {
         ComparerAlgo mesure = new ComparerAlgo();
         mesure.setTempsExecution(fin - start);
 
-        int nbNoeuds = 0;
+        // Calcul du nombre d'arcs visités
         int nbArcs = 0;
-        double qualiteChemin = 0;
-        // Calcul de la qualite du chemin, du nombre de noeuds et d'arcs visites
-        List<String> noeuds = g.listeNoeuds();
-        for (String n : noeuds) {
-            double val = res.getValeur(n);
-            if (val != Double.MAX_VALUE) {
-                qualiteChemin += val;
-                nbArcs+= g.suivants(n).size();
-                nbNoeuds++;
-            }
+        if (algorithme instanceof Dijkstra) {
+            nbArcs = ((Dijkstra) algorithme).getArcsVisites().size();
+        } else {
+            nbArcs = ((BellmanFord) algorithme).getArcsVisites().size();
         }
-
-        mesure.setQualiteChemin(qualiteChemin);
-        mesure.setNbNoeuds(nbNoeuds);
         mesure.setNbArcs(nbArcs);
+        // Calcul du nombre de noeuds visités
+        int nbNoeud = g.listeNoeuds().size();
+
+        // Calcul de la complexité du chemin
+        double complexite = 0;
+        if (algorithme instanceof Dijkstra) {
+            complexite = nbNoeud + nbArcs * (Math.log(g.listeNoeuds().size()) );
+        } else {
+            complexite = nbArcs * g.listeNoeuds().size();
+        }
+        mesure.setComplexite(complexite);
 
         return mesure;
+
     }
 
 }
