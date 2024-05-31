@@ -77,7 +77,7 @@ public class GrapheListe implements Graphe{
     }
 
     /**
-     * Methode pour ajouter un arc au graphe
+     * Methode pour ajouter un arc au graphe, si le noeud n'existe pas, il est cree
      * @param depart noeud de depart
      * @param destination noeud de destination
      * @param cout cout de l'arc
