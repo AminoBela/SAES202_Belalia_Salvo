@@ -3,12 +3,12 @@ import java.util.List;
 /**
  * Classe qui implemente l'algorithme de Bellman-Ford
  */
-public class BellmanFord {
+public class BellmanFord implements Algorithme{
 
     /**
      * Implementation de l'algorithme du point fixe (Question 8.txt)
-     * @param g
-     * @param s
+     * @param g graphe
+     * @param s noeud de depart
      * @return
      */
     public Valeur resoudre(Graphe g, String depart) {

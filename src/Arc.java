@@ -12,8 +12,8 @@ public class Arc {
 
     /**
      * Constructeur de la classe Arc
-     * @param d
-     * @param c
+     * @param d destination
+     * @param c cout
      */
     public Arc(String d, double c) {
         this.dest = d;

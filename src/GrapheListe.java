@@ -78,9 +78,9 @@ public class GrapheListe implements Graphe{
 
     /**
      * Methode pour ajouter un arc au graphe
-     * @param depart
-     * @param destination
-     * @param cout
+     * @param depart noeud de depart
+     * @param destination noeud de destination
+     * @param cout cout de l'arc
      * @throws Exception
      */
     public void ajouterArc(String depart, String destination, double cout) throws Exception {
@@ -124,11 +124,12 @@ public class GrapheListe implements Graphe{
 
     /**
      * Méthode qui retourne la liste des noeuds suivants
-     * @param s
+     * @param s noeud
      * @return
      */
      @Override
     public List<Arc> suivants(String s){
+         //verifier si le noeud existe, sinon retourner null
         if (!this.noeuds.contains(s)){
             return null;
         } else {

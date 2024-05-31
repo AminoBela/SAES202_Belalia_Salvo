@@ -19,7 +19,7 @@ public class Arcs {
 
     /**
      * Methode pour ajouter un arc a la liste d'arcs
-     * @param a
+     * @param a arc
      */
     public void ajouterArc(Arc a) {
         this.arcs.add(a);

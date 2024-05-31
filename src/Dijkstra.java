@@ -4,15 +4,15 @@ import java.util.List;
 /**
  * Classe Dijkstra qui permet de resoudre le probleme du plus court chemin
  */
-public class Dijkstra {
+public class Dijkstra implements Algorithme {
 
     /**
      * Methode resoudre qui permet de resoudre le probleme du plus court chemin
-     * @param g
-     * @param depart
-     * @return
+     * @param g graphe
+     * @param depart noeud de depart
+     * @return Valeur
      */
-    public Valeur resoudre(Graphe g, String depart) {
+    public Valeur resoudre(Graphe g, String depart)  {
         //initialisation des valeurs
         Valeur v = new Valeur();
         List<String> q = new ArrayList<>();

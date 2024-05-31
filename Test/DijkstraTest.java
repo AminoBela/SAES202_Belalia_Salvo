@@ -66,7 +66,6 @@ class DijkstraTest {
     /**
      * test lecture fichier
      */
-
     @Test
     void testLectureFichier() throws Exception {
         GrapheListe gr = new GrapheListe("Graphes/Graphe1.txt");
